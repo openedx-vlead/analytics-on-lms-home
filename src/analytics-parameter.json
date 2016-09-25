@@ -4,12 +4,12 @@
 			"QUERY" : "select * from auth_userprofile;",
 			"GET_LIST" : "no"
 		},
-	"NO_OF_MALES"    :
+	"NUMBER OF MALES"    :
 		{
 			"QUERY" : "select * from auth_userprofile where gender='m';",
 			"GET_LIST" : "no"
 		},
-	"NO_OF_FEMALES"  :
+	"NO OF FEMALES"  :
 		{	
 			"QUERY" : "select * from auth_userprofile where gender='f';",
 			"GET_LIST" : "no"

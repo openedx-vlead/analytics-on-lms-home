@@ -44,8 +44,10 @@ def fetch_from_redis(redis_hostname, port, db,counter_name):
 
 
 
-def create_analytics_html(file_name = "analytics.html", analytics_dict = {}):
+def create_analytics_html(filename, analytics_dict = {}):
 	no_of_students = analytics_dict["NUMBER OF STUDENTS ENROLLED"]
+	no_of_courses = analytics_dict["NUMBER OF AVAILABLE COURSES"]
+
 	div_str = """    
          <!--This section is for analytics to be shown on home page"
          <section id="recent-works">
@@ -71,7 +73,7 @@ def create_analytics_html(file_name = "analytics.html", analytics_dict = {}):
                         <img class="img-responsive" src="${static.url("images/portfolio/recent/item2.png")}" alt="">
                         <div class="overlay">
                             <div class="recent-work-inner">
-                                <h3><a href="#">Business theme</a></h3>
+                                <h1>""" + no_of_courses + """</h1>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
                                 <a class="preview" href="${static.url("images/portfolio/full/item2.png")}" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
                             </div> 
@@ -97,8 +99,12 @@ def create_analytics_html(file_name = "analytics.html", analytics_dict = {}):
             </div><!--/.row-->
         </div><!--/.container-->
     </section><!--/#recent-works-->"""
-
-
+	try:
+		fp = open(filename, "w") 
+		fp.write(div_str)
+		fp.close()
+	except:
+		print "Errors in file operations"
 
 with open("credentials.json") as cred_file:
 	cred_data = json.load(cred_file)
@@ -119,4 +125,5 @@ for key, value in user_data.items():
 
 print analytics_dict
 
+create_analytics_html("analytics.html", analytics_dict):
 
