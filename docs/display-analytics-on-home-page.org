@@ -25,7 +25,44 @@
    + You are done with redis client.
 
     
-
 * Configurations required
 ** Configure remote redis server to accept connection 
   + 
+** Configure remote redis server to accept remote connections
+   + Login to machine where redis server is running from.
+   + Open file /etc/redis/redis.conf
+     #+BEGIN_SRC command
+     sudo vim /etc/redis/redis.conf
+     #+END_SRC
+   + Replace "bind 127.0.0.1" to "bind 0.0.0.0"
+   + Restart redis server services
+     #+BEGIN_SRC command
+     sudo service redis-server restart
+     #+END_SRC
+     
+
+* Steps to setup open edX to display basic analytics count
+  + Login to edX instance where vlabs-edx-bootstrap-theme is applied
+  + Clone analytics-on-lms-home repository in home directory (/home/ubuntu)
+    #+BEGIN_SRC command
+    git clone https://github.com/openedx-vlead/analytics-on-lms-home.git
+    #+END_SRC
+  + Change directory to /home/ubuntu/analytics-on-lms-home/src/
+    #+BEGIN_SRC command
+    cd /home/ubuntu/analytics-on-lms-home/src
+    #+END_SRC
+  + Open file credentials.json to configure credentials 
+    #+BEGIN_SRC command
+    vim credentials.json
+    #+END_SRC
+  + Provide necessary details to keys. Sample is shown below
+    #+BEGIN_SRC command
+    {
+	"DB_USERNAME" : "root",
+	"DB_PASSWD" : "secret",
+	"DB_NAME" : "edxapp",
+	"DB_SERVER" : "localhost"
+	"REDIS_SERVER" : "someip"
+    }
+    #+END_SRC
+  
