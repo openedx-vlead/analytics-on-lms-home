@@ -1,0 +1,31 @@
+#+Title: Display simple analytics count on LMS home page 
+#+Date: Sunday, September 25, 2016 
+#+Author: Ashay Maheshwari
+
+* Introduction 
+  This document shows the setup and steps required to display sample
+  usage analytics on home page of VLABS Open edX.
+
+* Installations required 
+** Install python redis-client in Open edX instane ::
+   + Login to Open edX instance.
+   + Use pip to install redis client 
+     #+BEGIN_SRC command
+     sudo pip install redis
+     #+END_SRC
+   + Check by importing redis module 
+     #+BEGIN_SRC command
+     vlabs-edx@localhost:~/custom-scripts$ python
+     Python 2.7.10 (default, Jun 30 2015, 15:30:23) 
+     [GCC 4.8.4] on linux2
+     Type "help", "copyright", "credits" or "license" for more information.
+     >>> import redis
+     >>> 
+     #+END_SRC
+   + You are done with redis client.
+
+    
+
+* Configurations required
+** Configure remote redis server to accept connection 
+  + 
